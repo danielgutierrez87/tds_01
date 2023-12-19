@@ -1,0 +1,9 @@
+class Cachorro extends Animal {
+    Cachorro(String nome, String raca, String cor, Integer idade) { // metodo construtor, o que define o cão !
+      this.onomatopeia = "*som de cachorro";
+      this.nome = nome;
+      this. raca = raca;
+      this.cor = cor;
+      this.idade = idade;
+    }
+
