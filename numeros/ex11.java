@@ -1,6 +1,6 @@
 // Escreva uma calculadora orientada a objeto com 4 operações usando os valores de args, sem usar static
 
-public class Atv11 {
+public class ex11 {
     public static void main(String[] args) {
         if (args.length == 3) {
             Double x = Double.parseDouble(args[0]);
