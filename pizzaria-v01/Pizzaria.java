@@ -24,6 +24,7 @@ public class Pizzaria {
         System.out.println("Taxa de entrega: ");
         pedido.setTxEntrega(scan.nextDouble());
 
-        pedido.adicionarItemDoPedido{item};
+        pedido.adicionarItemDoPedido(item);
         pedido.imprimir();
     }
+}
