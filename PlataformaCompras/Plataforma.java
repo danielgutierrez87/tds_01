@@ -14,10 +14,39 @@ public class Plataforma {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        Produto prod = new Produto();
-        Pedido ped = new Pedido();
-        Usuario usu = new Usuario(); 
 
-        
+        Produto nomeProd = new Produto(); 
+
+        String continuar = "";
+
+        do {
+            System.out.print("Produto: ");
+            nomeProd.setNomeProd(scan.nextLine());
+
+            System.out.print("Preço: ");
+            nomeProd.setPrecoProd(scan.nextDouble());
+
+            System.out.print("Descrição: ");
+            nomeProd.setDescricao(scan.nextLine());
+
+            Pedido pedido = new Pedido();
+            pedido.setNomeProd(nomeProd); 
+
+            System.out.print("Endereço: ");
+            pedido.setEndereco(scan.nextLine());
+
+            System.out.print("Frete: ");
+            pedido.setFrete(scan.nextDouble());
+
+            Cliente cliente = new Cliente();
+            System.out.print("Cliente: ");
+            cliente.setNome(scan.nextLine());
+
+            System.out.print("Telefone: ");
+            cliente.setTelefone(scan.nextLine());
+
+            pedido.imprimir();
+            scan.close();
+        }
     }
 }

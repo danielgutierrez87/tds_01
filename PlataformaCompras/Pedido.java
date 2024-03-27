@@ -1,8 +1,10 @@
 package PlataformaCompras;
 
+import java.util.ArrayList;
+
 public class Pedido {
     
-    private String produto[] = new String[3];
+    private ArrayList<Produto> produto = new ArrayList<Produto>(); 
     private String data; 
     private String endereco;
     private float pagamento;
