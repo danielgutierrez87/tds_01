@@ -23,7 +23,7 @@ public class Plataforma {
         usuario.setEmail(input.nextLine());
 
         System.out.print("Senha: ");
-        usuario.setSenha(input.nextLine());
+        usuario.setSenha(input.nextInt());
         System.out.println();
 
         pedido.setCliente(usuario);
@@ -36,7 +36,7 @@ public class Plataforma {
             produto.setNomeProd(input.nextLine());
 
             System.out.print("Preço: ");
-            produto.setPrecoProd(input.nextDouble());
+            produto.setPrecoProd(input.nextFloat());
             input.nextLine();
 
             System.out.print("Descricao: ");

@@ -3,7 +3,7 @@ package PlataformaCompras;
 public class Produto {
 
     private String nomeProd;
-    private double precoProd;
+    private float precoProd;
     private String descricao;
 
     public String getNomeProd() {
