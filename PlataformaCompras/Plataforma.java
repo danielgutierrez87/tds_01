@@ -1,52 +1,70 @@
 package PlataformaCompras;
 
 import java.util.Scanner;
-
-/* Projetar um sistema orientado a objetos para uma 
-plataforma de compras on-line. Suas classes devem incluir
-- Usuário: nome, e-mail e senha;
-- ⁠Produto: nome, preço e descrição; 
-- ⁠Pedido: produtos, data, endereço, informações de pagamento e frete;
-Use o encapsulamento para proteger dados confidenciais e a 
-composição para criar relações entre objetos conforme necessário. */
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class Plataforma {
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
-        Scanner scan = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
+        Usuario usuario = new Usuario();
+        Pedido pedido = new Pedido();
 
-        Produto nomeProd = new Produto(); 
+        LocalDateTime data = LocalDateTime.now();
+        DateTimeFormatter formatData = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        pedido.setData(data.format(formatData));
 
-        String continuar = "";
+        System.out.println("Login");
+
+        System.out.print("Nome: ");
+        usuario.setNome(input.nextLine());
+
+        System.out.print("Email: ");
+        usuario.setEmail(input.nextLine());
+
+        System.out.print("Senha: ");
+        usuario.setSenha(input.nextLine());
+        System.out.println();
+
+        pedido.setCliente(usuario);
+
+        String continuar;
 
         do {
+            Produto produto = new Produto();
             System.out.print("Produto: ");
-            nomeProd.setNomeProd(scan.nextLine());
+            produto.setNomeProd(input.nextLine());
 
             System.out.print("Preço: ");
-            nomeProd.setPrecoProd(scan.nextDouble());
+            produto.setPrecoProd(input.nextDouble());
+            input.nextLine();
 
-            System.out.print("Descrição: ");
-            nomeProd.setDescricao(scan.nextLine());
+            System.out.print("Descricao: ");
+            produto.setDescricao(input.nextLine());
 
-            Pedido pedido = new Pedido();
-            pedido.setNomeProd(nomeProd); 
+            pedido.setTotal(produto.getPrecoProd());
 
-            System.out.print("Endereço: ");
-            pedido.setEndereco(scan.nextLine());
+            pedido.addProduto(produto);
 
-            System.out.print("Frete: ");
-            pedido.setFrete(scan.nextDouble());
+            System.out.print("> continuar a comprar? ");
+            continuar = input.nextLine();
+            System.out.println();
 
-            Cliente cliente = new Cliente();
-            System.out.print("Cliente: ");
-            cliente.setNome(scan.nextLine());
+        } while(!continuar.equalsIgnoreCase(""));
 
-            System.out.print("Telefone: ");
-            cliente.setTelefone(scan.nextLine());
+        System.out.print("Endereço: ");
+        pedido.setEndereco(input.nextLine());
 
-            pedido.imprimir();
-            scan.close();
-        }
+        System.out.print("Frete: ");
+        pedido.setFrete(input.nextDouble());
+        input.nextLine();
+
+        pedido.setTotal(pedido.getFrete());
+        
+        System.out.print("Pagamento: ");
+        pedido.setPagamento(input.nextLine());
+
+        pedido.imprimir();
+        input.close();
     }
 }

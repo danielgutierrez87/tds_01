@@ -1,8 +1,9 @@
 package PlataformaCompras;
 
 public class Produto {
+
     private String nomeProd;
-    private float precoProd;
+    private double precoProd;
     private String descricao;
 
     public String getNomeProd() {
