@@ -29,14 +29,12 @@ public class Pizzaria {
 
         } while (!continuar.equalsIgnoreCase(""));
 
-
         System.out.println("Nome do cliente: ");
         pedido.setCliente(scan.next());
 
         System.out.println("Taxa de entrega: ");
         pedido.setTxEntrega(scan.nextDouble());
 
-        
         pedido.imprimir();
     }
 }
