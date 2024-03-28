@@ -18,10 +18,6 @@ public class Pizzaria {
             System.out.println("Informe o sabor da pizza: ");
             item.setSabor(scan.nextLine());
 
-            System.out.println("Informe o valor da pizza: ");
-            item.setValor(scan.nextDouble());
-            scan.nextLine();
-
             pedido.adicionarItemDoPedido(item);
 
             System.out.println("Mais alguma coisa? ");

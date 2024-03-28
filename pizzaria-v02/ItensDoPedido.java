@@ -22,10 +22,14 @@ public class ItensDoPedido {
     }
 
     public void setValor(double valor) {
-        this.valor = valor; 
+        this.valor = valor;
     }
 
     public double getValor() {
-        return this.valor;
+        if (this.getTipo().equalsIgnoreCase("tradicional")) {
+            return 40.0;
+        } else {
+            return 50.0;
+        }
     }
 }
