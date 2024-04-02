@@ -1,78 +1,83 @@
 package PlataformaCompras;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
 public class Pedido {
-
-    private ArrayList<Produto> produtos = new ArrayList<>();
-    private String data;
+    private Double frete;
     private String endereco;
-    private double total = 0;
-    private double frete;
     private String pagamento;
-    private Usuario cliente;
+    private ArrayList<Produto> produto = new ArrayList<Produto>();
+    private Cliente cliente;
 
-    public void addProduto(Produto produto) {
-        this.produtos.add(produto);
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public void setEndereco(String endereco){
-        this.endereco = endereco;
-    }
-
-    public void setTotal(double total){
-        this.total += total;
-    }
-
-    public void setFrete(double frete){
-        this.frete = frete;
-    }
-
-    public double getFrete(){
+    public Double getFrete() {
         return this.frete;
     }
-
-    public void setPagamento(String pagamento){
+    public void setFrete(Double frete) {
+        this.frete = frete;
+    }
+    public String getEndereco() {
+        return this.endereco;
+    }
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    public String getData() {
+        LocalDateTime data = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        return data.format(formato);
+    }
+    public String getPagamento() {
+        return this.pagamento;
+    }
+    public void setPagamento(String pagamento) {
         this.pagamento = pagamento;
     }
-
-    public void setCliente(Usuario cliente){
+    public Produto getProduto(int index) {
+        return this.produto.get(index);
+    }
+    public void addProduto(Produto produto) {
+        this.produto.add(produto);
+    }
+    public Cliente getCliente() {
+        return this.cliente;
+    }
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public void imprimir(){
-        System.out.println("");
-        System.out.println("----------------------------------------");
-        System.out.println("                 E-Shop                 ");
-        System.out.println("----------------------------------------");
-        System.out.println(this.formatar("Cliente", this.cliente.getNome()));
-        System.out.println(this.formatar("E-mail", this.cliente.getEmail()));
-        System.out.println(this.formatar("Endereço", this.endereco));
-        System.out.println("----------------------------------------");
-        for(int i = 0; i < this.produtos.size(); i++){
-            System.out.println(this.formatar(this.produtos.get(i).getNomeP(), String.valueOf(this.produtos.get(i).getPreco())));
+    public Double getTotal() {
+        Double total = this.getFrete();
+        for(int i = 0; i < this.produto.size(); i++) {
+            total += this.getProduto(i).getPreco();
         }
-        System.out.println("----------------------------------------");
-        System.out.println(this.formatar("Frete", String.valueOf(this.frete)));
-        System.out.println(this.formatar("Total", String.valueOf(this.total)));
-        System.out.println("----------------------------------------");
-        System.out.println(this.formatar("Pagamento", this.pagamento));
-        System.out.println("----------------------------------------");
-        System.out.println(this.formatar("Data", this.data));
+        return total;
     }
-
-    private String formatar(String titulo, String item){
-        String div = "----------------------------------------";
-        int finalDiv = div.length() -1;
-        int finalItem = titulo.length() + item.length() -1;
-
-        while(finalDiv != finalItem && item.length() < div.length()){
-            item = " " + item;
-            finalItem = titulo.length() + item.length() -1;
+    
+    public void imprimir() {
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("------------------------------------");
+        System.out.println("          Venda da esquina          ");
+        System.out.println("------------------------------------");
+        for(int i = 0; i < this.produto.size(); i++) {
+            System.out.println("Produto: " + this.getProduto(i).getNome());
+            System.out.println("         " + this.getProduto(i).getPreco());
         }
-        return titulo + item;
+        System.out.println("------------------------------------");
+        System.out.println("Entregar: " + this.getEndereco());
+        System.out.println("Cliente: " + this.getCliente().getNome());
+        System.out.println("Telefone: " + this.getCliente().getTelefone());
+        System.out.println("------------------------------------");
+        System.out.println("Frete: " + this.getFrete());
+        System.out.println("------------------------------------");
+        System.out.println("TOTAL: " + this.getTotal());
+        System.out.println("------------------------------------");
+        System.out.println("Forma de pagamento: " + this.getPagamento());
+        System.out.println("------------------------------------");
+        System.out.println(this.getData());
     }
 }

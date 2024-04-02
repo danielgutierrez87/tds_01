@@ -1,25 +1,25 @@
 package PlataformaCompras;
 
 public class Produto {
-
-    private String nomeProd;
-    private double precoProd;
+    
+    private String nome;
+    private Double preco;
     private String descricao;
 
-    public String getNomeProd() {
-        return nomeProd;
+    public String getNome() {
+        return this.nome;
     }
-    public void setNomeProd(String nomeProd) {
-        this.nomeProd = nomeProd;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-    public float getPrecoProd() {
-        return precoProd;
+    public Double getPreco() {
+        return this.preco;
     }
-    public void setPrecoProd(float precoProd) {
-        this.precoProd = precoProd;
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
