@@ -1,4 +1,4 @@
-package PlataformaCompras;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Plataforma {
@@ -12,9 +12,20 @@ public class Plataforma {
             Produto produto = new Produto();
             System.out.print("Produto: ");
             produto.setNome(scan.nextLine());
+         
+            boolean digitouErrado; // serve para corrigir exception do sistema
+            do {
+                try {
+                    System.out.print("Preço: ");
+                    produto.setPreco(scan.nextDouble());
+                    digitouErrado = false;
+                } catch (InputMismatchException erro) {
+                    digitouErrado = true;
+                    System.err.println("DIGITOU ERRADO");
+                }
+                scan.nextLine();
+            } while (digitouErrado);
 
-            System.out.print("Preço: ");
-            produto.setPreco(scan.nextDouble());
             scan.nextLine();
 
             System.out.print("Descrição: ");

@@ -1,5 +1,3 @@
-package PlataformaCompras;
-
 public class Cliente {
 
     private String nome;
