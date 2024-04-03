@@ -19,7 +19,7 @@ public class Plataforma {
                     System.out.print("Preço: ");
                     produto.setPreco(scan.nextDouble());
                     digitouErrado = false;
-                } catch (InputMismatchException erro) {
+                } catch (InputMismatchException erro) { // erro é uma variável
                     digitouErrado = true;
                     System.err.println("DIGITOU ERRADO");
                 }
