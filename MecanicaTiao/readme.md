@@ -6,5 +6,5 @@ OrdemServico: total, cliente, veiculo, servicos;
 Servicos: valor, data, descricao, tempo;
 
 /* Cada veiculo tem certas tarefas 
-   Nem sempre consegue concertar o veiculo num dia
+   Nem sempre consegue consertar o veiculo num dia
    Frequentemente ele intercala os consertos dos veículos */ 

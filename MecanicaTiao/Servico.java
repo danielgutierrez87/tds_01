@@ -3,28 +3,29 @@ import java.time.format.DateTimeFormatter;
 
 public class Servico {
 
-    private double valor; 
+    private double valor;
+    private LocalDateTime data = LocalDateTime.now();
     private String descricao;
 
-    public String getData() {
-        LocalDateTime data = LocalDateTime.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        return data.format(formato);
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
+    public void setValor(double valor){
         this.valor = valor;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public double getValor(){
+        return this.valor;
     }
 
-    public void setDescricao(String descricao) {
+    public LocalDateTime getData(){
+        return this.data;
+    }
+
+    public void setDescriçao(String descricao){
         this.descricao = descricao;
     }
+
+    public String getDescricao(){
+        return this.descricao;
+    }
+
 }
+

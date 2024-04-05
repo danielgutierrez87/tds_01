@@ -7,25 +7,25 @@ public class Cliente {
     private String contato;
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
     public void setNome(String nome) {
         this.nome = nome;
     }
     public String getEndereco() {
-        return endereco;
+        return this.endereco;
     }
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
     public String getCpf() {
-        return cpf;
+        return this.cpf;
     }
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
     public String getContato() {
-        return contato;
+        return this.contato;
     }
     public void setContato(String contato) {
         this.contato = contato;
