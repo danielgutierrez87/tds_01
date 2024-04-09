@@ -19,7 +19,7 @@ public class Servico {
         return this.data;
     }
 
-    public void setDescriçao(String descricao){
+    public void setDescricao(String descricao){
         this.descricao = descricao;
     }
 

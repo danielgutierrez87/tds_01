@@ -37,35 +37,30 @@ public class OrdemServico {
 
     public void addServico(Servico servico){
         this.servico.add(servico);
+        this.addTotal(servico.getValor());
     }
 
     public void status() {
-        System.out.println("_________________________________");
-        System.out.println("CLIENTE");
-        System.out.println("_________________________________");
-        System.err.println("Nome do cliente: " + this.getCliente().getNome());
-        System.out.println("Endereço: " + this.getCliente().getEndereco());
-        System.out.println("CPF: " + this.getCliente().getCpf());
-        System.out.println("Contato: " + this.getCliente().getContato());
-        System.out.println("__________________________________");
-        System.out.println("VEÍCULO");
-        System.out.println("__________________________________");
-        System.out.println("Descrição: " + this.getVeiculo().getDescricao());
-        System.out.println("Placa: " + this.getVeiculo().getPlaca());
-        System.out.println("Ano do veículo: " + this.getVeiculo().getAno());
-        System.out.println("___________________________________");
-        System.out.println("SERVIÇO");
-        System.out.println("___________________________________");
-            for (int i = 0; i < this.servico.size; i++) {
+        System.out.println("                           Ordem de Serviço Nº                           ");
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.printf("Cliente  : %62s\n", this.getCliente().getNome());
+        System.out.printf("CPF      : %62s\n", this.getCliente().getCpf());
+        System.out.printf("Contato  : %62s\n", this.getCliente().getContato());
+        System.out.printf("Endereço : %62s\n", this.getCliente().getEndereco());
+        System.out.println("");
+        System.out.printf("Veículo     : %59s\n", this.getVeiculo().getDescricao());
+        System.out.printf("Ano / Placa : %59s\n", this.getVeiculo().getAno() + "/" + this.getVeiculo().getPlaca());
+        System.out.println("");
+        System.out.println("                                 Serviço                                 ");
+        System.out.println("-------------------------------------------------------------------------");
+            for(int i = 0; i < this.servico.size(); i++) {
                 System.out.print(this.servico.get(i).getDescricao());
                 System.out.print(" : ");
                 Integer padding = 73 - (this.servico.get(i).getDescricao().length() + 3);
-                System.out.printf("%"+padding+ "");
+                System.out.printf("%"+padding+".2f\n", this.servico.get(i).getValor());
             }
-
-        System.out.println("Valor do serviço: " + this.getServico().getValor());
-        System.out.println("Descrição do serviço: " + this.getServico().getDescricao());
-        System.out.println("___________________________________");
-        
+        System.out.println("");
+        System.out.printf("%73.2f\n", this.getTotal());
+        System.out.println("-------------------------------------------------------------------------");
     }
 }
