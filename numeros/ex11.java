@@ -5,7 +5,7 @@ public class ex11 {
         if (args.length == 3) {
             Double x = Double.parseDouble(args[0]);
             Double y = Double.parseDouble(args[2]);
-            Double res = 0;
+            Double res = 0.0;
 
             calcular calc = new calcular(x, y);
             switch (args[1]) {
