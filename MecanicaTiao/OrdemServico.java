@@ -57,7 +57,7 @@ public class OrdemServico {
                 System.out.print(this.servico.get(i).getDescricao());
                 System.out.print(" : ");
                 Integer padding = 73 - (this.servico.get(i).getDescricao().length() + 3);
-                System.out.printf("%"+padding+".2f\n", this.servico.get(i).getValor());
+                System.out.printf("%"+padding+".2f\n", this.servico .get(i).getValor());
             }
         System.out.println("");
         System.out.printf("%73.2f\n", this.getTotal());
