@@ -43,7 +43,7 @@ public class Pedido{
     public void imprimir(){
         System.out.println("----------------------------------------");
         System.out.println("                 Pizzaria               ");
-        System.out.println("                 Luigi's                ");
+        System.out.println("                 Mama Mia               ");
         System.out.println("----------------------------------------");
         System.out.println(formatar("Cliente", this.cliente));
         System.out.println("----------------------------------------");

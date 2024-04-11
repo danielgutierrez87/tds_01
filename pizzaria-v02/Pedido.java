@@ -1,72 +1,86 @@
 import java.util.ArrayList;
 
 public class Pedido {
-    private ArrayList<ItemDoPedido> itemDoPedido = new ArrayList<ItemDoPedido>();
+    private double taxaEntrega;
+    private ArrayList<ItemDoPedido> itemDoPedido = new ArrayList<>();
     private String cliente;
-    private String localEntrega;
+    private String bairro;
+    private double total = 0;
 
-    public void adicionarItemDoPedido(ItemDoPedido item) {
+    public void addItem(ItemDoPedido item){
         this.itemDoPedido.add(item);
     }
-    public ItemDoPedido getItemDoPedido(int index) {
-        return this.itemDoPedido.get(index);
+
+    public ArrayList<ItemDoPedido> getItem(){
+        return this.itemDoPedido;
     }
 
-    public Double getTotal() {
-        Double total = this.getTaxaEntrega();
-        for(int i = 0; i < this.itemDoPedido.size(); i++) {
-            total += this.itemDoPedido.get(i).getValor();
-        }
-        return total;
-    }
-    
-    public void setCliente(String nome) {
+    public void setCliente(String nome){
         this.cliente = nome;
     }
-    public String getCliente() {
-        return this.cliente;
-    }
 
-    public void setLocalEntrega(String local) {
-        this.localEntrega = local;
-    }
-    public String getLocalEntrega() {
-        return this.localEntrega;
-    }
-
-    public Double getTaxaEntrega() {
-        String local = this.getLocalEntrega();
-
-        if (local.equalsIgnoreCase("centro")) {
-            return 10.0;
-        } else
-        if(local.equalsIgnoreCase("bairro")) {
-            return 15.0;
+    public void setTaxaDeEntrega(String bairro){
+        if(bairro.equals("centro")){
+            taxaEntrega = 10;
+        } else if (bairro.equals("periferia")){
+            taxaEntrega =  15;
         } else {
-            return 20.0;
+            taxaEntrega =  20;
         }
     }
 
-    public void imprimir() {
-        System.out.println("--------------------------------------------");
-        System.out.println("                  PIZZARIA                  ");
-        System.out.println("                 QuasePronto                ");
-        System.out.println("--------------------------------------------");
-        System.out.println(" Cliente     : " + this.cliente);
-        System.out.println("--------------------------------------------");
-        for (int i =0; i < this.itemDoPedido.size(); i++) {
-            if (i > 0 ) {
-                System.out.println();
+    public double getTaxaDeEntrega(){
+        return this.taxaEntrega;
+    }
+
+    public void setTotal(double total){
+        this.total += total;
+    }
+
+    public double getTotal(){
+        return this.total;
+    }
+
+    public void setBairro(String bairro){
+        this.bairro = bairro;
+    }
+
+    public String getBairro(){
+        return this.bairro;
+    }
+
+    public void imprimir(){
+        System.out.println("----------------------------------------");
+        System.out.println("                 Pizzaria               ");
+        System.out.println("                 Mama Mia               ");
+        System.out.println("----------------------------------------");
+        System.out.println(formatar("Cliente", this.cliente));
+        System.out.println("----------------------------------------");
+        for(int i = 0; i < itemDoPedido.size(); i++){
+            System.out.println(formatar("Tipo", this.itemDoPedido.get(i).getTipo()));
+            System.out.println(formatar("Sabor", this.itemDoPedido.get(i).getSabor()));
+            System.out.println(formatar("Valor", String.valueOf(this.itemDoPedido.get(i).getValor())));
+            if(i < itemDoPedido.size() -1){
+                System.out.println("");
             }
-            System.out.println(" Tipo        : " + this.itemDoPedido.get(i).getTipo());
-            System.out.println(" Sabor       : " + this.itemDoPedido.get(i).getSabor());
-            System.out.println(" Valor       : " + this.itemDoPedido.get(i).getValor());
         }
-        System.out.println("--------------------------------------------");
-        System.out.println(" Entregar em : " + this.getLocalEntrega());
-        System.out.println(" Taxa        : " + this.getTaxaEntrega());
-        System.out.println("--------------------------------------------");
-        System.out.println(" Total       : " + this.getTotal());
-        System.out.println("--------------------------------------------");
+        System.out.println("----------------------------------------");
+        System.err.println(formatar("Bairro", this.bairro));
+        System.out.println(formatar("Tx. Entrega", String.valueOf(this.taxaEntrega)));
+        System.out.println("----------------------------------------");
+        System.out.println(formatar("Total", String.valueOf(this.total)));
+        System.out.println("----------------------------------------");
+    }
+
+    private static String formatar(String titulo, String item){
+        String div = "----------------------------------------";
+        int finalDiv = div.length() -1;
+        int finalItem = titulo.length() + item.length() -1;
+
+        while(finalDiv != finalItem && item.length() < div.length()){
+            item = " " + item;
+            finalItem = titulo.length() + item.length() -1;
+        }
+        return titulo + item;
     }
 }

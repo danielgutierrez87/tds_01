@@ -2,12 +2,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
-        System.out.println("Bem vindo a pizzaria!");
+        System.out.println("Bem vindo!");
         System.out.println("Selecione:");
         System.out.println("1.Pedido");
         System.out.println("2.Imprimir histórico");
         System.out.println("#.Sair");
         String menu = input.nextLine();
+        Faturamento faturamento = new Faturamento();
 
         while(true){
             if(menu.equals("#")){
@@ -43,10 +44,14 @@ public class Main {
                     System.out.print("Bairro: ");
                     pedido.setBairro(input.nextLine().trim());
                     pedido.setTaxaDeEntrega(pedido.getBairro());
-        
                     pedido.setTotal(pedido.getTaxaDeEntrega());
-        
-                    pedido.imprimir();
+
+
+                    faturamento.setTotalMotoboy(pedido.getTaxaDeEntrega());
+                    faturamento.setTotalGeral(pedido.getTotal());
+                    faturamento.setTotalLiquido(faturamento.getTotalGeral() - faturamento.setTotalMotoboy());
+
+                    faturamento.addPedido(pedido);
                     break;
 
                 case "2":
@@ -58,5 +63,6 @@ public class Main {
             System.out.println("#.Sair");
             menu = input.nextLine();
         }
+        input.close();
     }
 }
