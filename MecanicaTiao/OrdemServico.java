@@ -1,63 +1,87 @@
 import java.util.ArrayList;
-
-public class OrdemServico {
+public class OrdemServico{
     
-    private Double total = .0;
+    private double total = 0;
     private Cliente cliente;
     private Veiculo veiculo;
-    private ArrayList<Servico> servicos = new ArrayList<Servico>();
-    
-    public Cliente getCliente() {
-        return this.cliente;
-    }
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    private ArrayList<Servicos> servico = new ArrayList<>();
 
-    public void addTotal(Double total) {
+    public void addTotal(double total){
         this.total += total;
     }
-    public Double getTotal() {
+
+    public double getTotal(){
         return this.total;
     }
 
-    public Veiculo getVeiculo() {
-        return this.veiculo;
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
     }
-    public void setVeiculo(Veiculo veiculo) {
+
+    public Cliente getCliente(){
+        return this.cliente;
+    }
+
+
+    public void setVeiculo(Veiculo veiculo){
         this.veiculo = veiculo;
     }
 
-    public Servico getServico(Integer index) {
-        return this.servicos.get(index);
-    }
-    public void addServico(Servico servico) {
-        this.servicos.add(servico);
-        this.addTotal(servico.getValor());
+    public Veiculo getVeiculo(){
+        return this.veiculo;
     }
 
-    public void imprimir() {
-        // "@edtsz ➜ /workspaces/tds_01/ederson/Mecanicaria (main) $ java Mecanicaria";
-        System.out.println("                           Ordem de Serviço Nº                           ");
-        System.out.println("-------------------------------------------------------------------------");
-        System.out.printf("Cliente  : %62s\n", this.getCliente().getNome());
-        System.out.printf("CPF      : %62s\n", this.getCliente().getCpf());
-        System.out.printf("Contato  : %62s\n", this.getCliente().getContato());
-        System.out.printf("Endereço : %62s\n", this.getCliente().getEndereco());
-        System.out.println("");
-        System.out.printf("Veículo     : %59s\n", this.getVeiculo().getDescricao());
-        System.out.printf("Ano / Placa : %59s\n", this.getVeiculo().getAno() + "/" + this.getVeiculo().getPlaca());
-        System.out.println("");
-        System.out.println("                                 Serviço                                 ");
-        System.out.println("-------------------------------------------------------------------------");
-        for(int i = 0; i < this.servicos.size(); i++) {
-            System.out.print(this.servicos.get(i).getDescricao());
-            System.out.print(" : ");
-            Integer padding = 73 - (this.servicos.get(i).getDescricao().length() + 3);
-            System.out.printf("%"+padding+".2f\n", this.servicos.get(i).getValor());
+    public void addServico(Servicos servico){
+        this.servico.add(servico);
+    }
+
+    private static String formatar(String titulo, String item){
+        String div = "----------------------------------------";
+        int finalDiv = div.length() -1;
+        int finalItem = titulo.length() + item.length() -1;
+
+        while(finalDiv != finalItem && item.length() < div.length()){
+            item = " " + item;
+            finalItem = titulo.length() + item.length() -1;
+
         }
+        return titulo + item;
+    }
+
+    private static String formatCPF(String CPF){
+        String CPFformated = ""; 
+        for(int i = 0; i < CPF.length(); i++){
+            CPFformated += CPF.charAt(i);
+            if(i == 2 || i == 5){
+                CPFformated += ".";
+            }
+            if(i == 8){
+                CPFformated += "-";
+            }
+        }
+        return CPFformated;
+    }
+
+    public void imprimir(){
         System.out.println("");
-        System.out.printf("%73.2f\n", this.getTotal());
-        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("           Ordem de serviço N°          ");
+        System.out.println("----------------------------------------");
+        System.out.println(formatar("Cliente", this.cliente.getNome()));
+        System.out.println(formatar("CPF", formatCPF(this.cliente.getCPF())));
+        System.out.println(formatar("Endereço", this.cliente.getEndereco()));
+        System.out.println(formatar("Contato", this.cliente.getContato()));
+        System.out.println("");
+        System.out.println(formatar("Veículo", this.veiculo.getDescricao()));
+        System.out.println(formatar("Placa", this.veiculo.getPlaca()));
+        System.out.println(formatar("Ano", this.veiculo.getAno()));
+        System.out.println("");
+        System.out.println("                Serviço                 ");
+        System.out.println("----------------------------------------");
+        for(int i = 0; i < this.servico.size(); i++){
+            System.out.println(formatar(this.servico.get(i).getDescricao(), String.valueOf(this.servico.get(i).getValor())));
+        }
+        System.out.println("----------------------------------------");
+        System.out.println(formatar("Total", String.valueOf(this.total)));
+        System.out.println("----------------------------------------");   
     }
 }

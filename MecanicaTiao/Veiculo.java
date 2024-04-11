@@ -1,26 +1,31 @@
-public class Veiculo {
+public class Veiculo{
+
     private String descricao;
     private String placa;
-    private Integer ano;
+    private String ano;
 
-    public String getDescricao() {
-        return this.descricao;
-    }
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao){
         this.descricao = descricao;
     }
 
-    public String getPlaca() {
-        return this.placa;
+    public String getDescricao(){
+        return this.descricao;
     }
-    public void setPlaca(String placa) {
+
+    public void setPlaca(String placa){
         this.placa = placa;
     }
-    
-    public Integer getAno() {
-        return this.ano;
+
+    public String getPlaca(){
+        return this.placa;
     }
-    public void setAno(Integer ano) {
+
+    public void setAno(String ano){
         this.ano = ano;
     }
+
+    public String getAno(){
+        return this.ano;
+    }
+
 }
