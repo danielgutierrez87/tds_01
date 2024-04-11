@@ -1,11 +1,11 @@
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class Servico {
+public class Servicos{
 
     private double valor;
-    private LocalDateTime data = LocalDateTime.now();
     private String descricao;
+    private LocalDateTime data = LocalDateTime.now();
+    private String tempo;
 
     public void setValor(double valor){
         this.valor = valor;
@@ -27,5 +27,13 @@ public class Servico {
         return this.descricao;
     }
 
+    public void setTempo(String tempo){
+        this.tempo = tempo;
+    }
+
+    public String getTempo(){
+        return this.tempo;
+    }
+    
 }
 
