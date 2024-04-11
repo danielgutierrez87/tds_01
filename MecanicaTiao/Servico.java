@@ -1,31 +1,22 @@
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class Servico {
-
-    private double valor;
-    private LocalDateTime data = LocalDateTime.now();
+    private Double valor;
     private String descricao;
+    private LocalDateTime data = LocalDateTime.now();
 
-    public void setValor(double valor){
-        this.valor = valor;
-    }
-
-    public double getValor(){
-        return this.valor;
-    }
-
-    public LocalDateTime getData(){
-        return this.data;
-    }
-
-    public void setDescricao(String descricao){
-        this.descricao = descricao;
-    }
-
-    public String getDescricao(){
+    public String getDescricao() {
         return this.descricao;
     }
-
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
+    public Double getValor() {
+        return this.valor;
+    }
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 }
 

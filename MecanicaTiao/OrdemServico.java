@@ -1,46 +1,43 @@
 import java.util.ArrayList;
 
 public class OrdemServico {
-
-    private double total; 
+    
+    private Double total = .0;
     private Cliente cliente;
-    private Veiculo veiculo; 
-    private ArrayList<Servico> servico = new ArrayList<Servico>();
-
-    public void addTotal(double total){
-        this.total += total;
+    private Veiculo veiculo;
+    private ArrayList<Servico> servicos = new ArrayList<Servico>();
+    
+    public Cliente getCliente() {
+        return this.cliente;
     }
-
-    public double getTotal(){
-        return this.total;
-    }
-
-    public void setCliente(Cliente cliente){
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public Cliente getCliente(){
-        return this.cliente;
+    public void addTotal(Double total) {
+        this.total += total;
+    }
+    public Double getTotal() {
+        return this.total;
     }
 
-    public void setVeiculo(Veiculo veiculo){
+    public Veiculo getVeiculo() {
+        return this.veiculo;
+    }
+    public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
 
-    public Veiculo getVeiculo(){
-        return this.veiculo;
+    public Servico getServico(Integer index) {
+        return this.servicos.get(index);
     }
-
-    public ArrayList<Servico> getServico() {
-        return this.servico;
-    }
-
-    public void addServico(Servico servico){
-        this.servico.add(servico);
+    public void addServico(Servico servico) {
+        this.servicos.add(servico);
         this.addTotal(servico.getValor());
     }
 
-    public void status() {
+    public void imprimir() {
+        // "@edtsz ➜ /workspaces/tds_01/ederson/Mecanicaria (main) $ java Mecanicaria";
         System.out.println("                           Ordem de Serviço Nº                           ");
         System.out.println("-------------------------------------------------------------------------");
         System.out.printf("Cliente  : %62s\n", this.getCliente().getNome());
@@ -53,12 +50,12 @@ public class OrdemServico {
         System.out.println("");
         System.out.println("                                 Serviço                                 ");
         System.out.println("-------------------------------------------------------------------------");
-            for(int i = 0; i < this.servico.size(); i++) {
-                System.out.print(this.servico.get(i).getDescricao());
-                System.out.print(" : ");
-                Integer padding = 73 - (this.servico.get(i).getDescricao().length() + 3);
-                System.out.printf("%"+padding+".2f\n", this.servico.get(i).getValor());
-            }
+        for(int i = 0; i < this.servicos.size(); i++) {
+            System.out.print(this.servicos.get(i).getDescricao());
+            System.out.print(" : ");
+            Integer padding = 73 - (this.servicos.get(i).getDescricao().length() + 3);
+            System.out.printf("%"+padding+".2f\n", this.servicos.get(i).getValor());
+        }
         System.out.println("");
         System.out.printf("%73.2f\n", this.getTotal());
         System.out.println("-------------------------------------------------------------------------");

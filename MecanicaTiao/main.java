@@ -1,14 +1,12 @@
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
-
+        Scanner scan = new Scanner(System.in);
+        
         Cliente cliente = new Cliente();
-        OrdemServico ordem = new OrdemServico();
-        Servico servico = new Servico();
         Veiculo veiculo = new Veiculo();
-
-        Scanner input = new Scanner(System.in);
+        OrdemServico ordemServico = new OrdemServico();
 
         System.out.print("Veículo Descricao: ");
         veiculo.setDescricao(scan.nextLine());
@@ -45,6 +43,7 @@ public class main {
                 break;
             }
         }
-        status.imprimir();
+
+        ordemServico.imprimir();
     }
 }
