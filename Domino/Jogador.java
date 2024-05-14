@@ -1,10 +1,7 @@
 import java.util.ArrayList;
-import java.util.random;
-
 public class Jogador {
     private String name;
     private ArrayList<Peca> pecaDaMao = new ArrayList<>();
-    private Mesa mesa;
 
     public Jogador(String name) {
         this.name = name;
@@ -18,11 +15,13 @@ public class Jogador {
         this.name = name;
     }
 
-    public function pescar() {
-
+    public void iniciarJogada(Peca p){
+        for (int i = 0; i < 7; i++) {
+            this.pecaDaMao(p);
+        }
     }
 
-    public function jogar() {
-        this.pecaDaMao.add(mesa);
+    public void jogada(Peca p){
+        this.pecaDaMao.add(p);
     }
 }
