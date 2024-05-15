@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Mesa {
-    private ArrayList<Pecas> pecasMesa;
-    private ArrayList<Jogador> jogador;
+    private Monte monte;
+    private ArrayList<Jogador> jogador = new ArrayList<>();
     private int turno;
 
     public int getTurno() {
@@ -12,7 +12,11 @@ public class Mesa {
         this.turno = turno;
     } 
 
-    public void receberPeca() {
-        
+    public void distribuirPecas() {
+        for(int j = 0; j < 7; j++) {
+            for (int i = 0; i < this.jogador.size(); i++) {
+                this.jogador.get(i).pegarPeca(this.monte.pegarPecaDoMonte());
+            }
+        }
     }
 }

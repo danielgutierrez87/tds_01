@@ -1,8 +1,18 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        Peca peca = new Peca();
+        
         Monte monte = new Monte();
+        Mesa mesa = new Mesa();
+        Jogador jogador = new Jogador();
 
-        monte.popular();
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Número de jogadores: ");
+        nj = scan.nextInt();
+        
+
+
     }
 }

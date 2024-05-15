@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+
 public class Jogador {
     private String name;
-    private ArrayList<Peca> pecaDaMao = new ArrayList<>();
+    private ArrayList<Peca> pecasNaMao = new ArrayList<>();
 
     public Jogador(String name) {
         this.name = name;
@@ -15,13 +16,7 @@ public class Jogador {
         this.name = name;
     }
 
-    public void iniciarJogada(Peca p){
-        for (int i = 0; i < 7; i++) {
-            this.pecaDaMao(p);
-        }
-    }
-
-    public void jogada(Peca p){
-        this.pecaDaMao.add(p);
+    public void pegarPeca(Peca p){
+        this.pecasNaMao.add(p);
     }
 }
